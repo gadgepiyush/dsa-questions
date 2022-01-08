@@ -16,7 +16,7 @@ public class CustomStack{
     }
 
     //method to push an item into stacked
-    boolean push(int item){
+    public boolean push(int item){
 
         if(isFull()){
             return false;
@@ -25,6 +25,16 @@ public class CustomStack{
         ptr++;
         data[ptr] = item;
         return true;
+    }
+
+    public
+
+    private boolean isFull(){
+        return ptr == data.length-1;
+    }
+
+    private boolean isEmpty(){
+        return ptr == -1;
     }
 
 
