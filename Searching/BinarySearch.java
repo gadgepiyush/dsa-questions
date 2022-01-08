@@ -9,6 +9,7 @@ public class BinarySearch {
 
     }
 
+    // finding square root of integers using binary search
     static int mySqrt(int x){
 
         int start=0;
