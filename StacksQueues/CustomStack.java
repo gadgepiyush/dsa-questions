@@ -1,17 +1,17 @@
 package solvedArchive.StacksQueues;
 
-public class CustomStack{
+class CustomStackMethods{
 
     protected int[] data;
     private static final int defaultSize = 10;
 
     int ptr = -1;
 
-    CustomStack(){
+    CustomStackMethods(){
         this(defaultSize);
     }
 
-    CustomStack(int size){
+    CustomStackMethods(int size){
         this.data = new int[size];
     }
 
@@ -27,7 +27,22 @@ public class CustomStack{
         return true;
     }
 
-    public
+    public int pop() throws Exception {
+        if(isEmpty()){
+            throw new Exception("Cannot pop, stack is empty");
+        }
+//        int removed = data[ptr];
+//        ptr--;
+//        return removed;
+        return data[ptr--];
+    }
+
+    public int peek() throws Exception{
+        if(isEmpty()){
+            throw new Exception("Cannot peek, stack is empty");
+        }
+        return data[ptr];
+    }
 
     private boolean isFull(){
         return ptr == data.length-1;
@@ -37,6 +52,19 @@ public class CustomStack{
         return ptr == -1;
     }
 
+}
 
+
+public class CustomStack {
+
+    public static void main(String[] args) throws Exception {
+        CustomStackMethods stack = new CustomStackMethods(5);
+
+        stack.push(1);
+
+        System.out.println(stack.peek());
+
+    }
 
 }
+
