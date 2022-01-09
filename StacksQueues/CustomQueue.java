@@ -5,7 +5,7 @@ class CustomQueueMethods {
 
     int[] data;
     int initialSize;
-    int end = 0;
+    int ptr = 0;
 
     CustomQueueMethods(int initialSize){
         this.initialSize = initialSize;
@@ -18,8 +18,8 @@ class CustomQueueMethods {
         if(isFull())
             return false;
 
-        data[end] = item;
-        end++;
+        data[ptr] = item;
+        ptr++;
         return true;
     }
 
@@ -35,11 +35,12 @@ class CustomQueueMethods {
 
         }
 
-        end--;
+        ptr--;
         return removed;
     }
 
 
+    // displays the end item which would be removed if the remove func is called
     public int displayFront() throws Exception{
         if(isEmpty())
             throw new Exception("Queue is empty");
@@ -48,13 +49,21 @@ class CustomQueueMethods {
     }
 
 
+    //prints the whole queue in the order it is inserted
+    public void printQueue(){
+        for(int i = ptr -1; i>=0 ; i--){
+            System.out.print(data[i]+" -> ");
+        }
+        System.out.println("end");
+    }
+
 
     private boolean isFull(){
-        return end == data.length-1;
+        return ptr == data.length;
     }
 
     private boolean isEmpty(){
-        return end == -1;
+        return ptr == 0;
     }
 
 }
@@ -63,15 +72,12 @@ class CustomQueueMethods {
 class CustomQueue{
 
     public static void main(String[] args) throws Exception{
-        CustomQueueMethods queue = new CustomQueueMethods(4);
-        queue.insert(41);
-        queue.insert(21);
-        queue.insert(14);
-        queue.insert(13);
-        queue.insert(21);
-        queue.insert(11);
+        CustomQueueMethods queue = new CustomQueueMethods(6);
 
-        System.out.println(queue.displayFront());
+
+        queue.printQueue();
+        queue.remove();
+        queue.printQueue();
     }
 
 }
