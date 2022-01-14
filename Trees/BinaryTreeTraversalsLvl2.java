@@ -1,4 +1,6 @@
 package solvedArchive.Trees;
+import java.awt.image.ImageProducer;
+import java.util.*;
 
 public class BinaryTreeTraversalsLvl2 {
 
@@ -19,8 +21,7 @@ public class BinaryTreeTraversalsLvl2 {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-
-        levelOrderTraversal1(root);
+        BinaryTreeViews.bottomView1(root);
 
     }
 
@@ -63,5 +64,74 @@ public class BinaryTreeTraversalsLvl2 {
     }
 
 
+    //level-order traversal (Optimized) (Time complexity O(N))
+    static void levelOrderTraversal2(BTNode root){
+
+        Queue<BTNode> queue = new LinkedList<>();
+        queue.add(root);
+
+
+        while(!queue.isEmpty()){
+            BTNode currNode = queue.poll();
+            System.out.print(currNode.val+" ");
+
+            if(currNode.left!=null)
+                queue.add(currNode.left);
+
+
+            if(currNode.right!=null)
+                queue.add(currNode.right);
+
+        }
+    }
+
+    //level order traversal return List
+    static List<List<Integer>> levelOrderTraversal3(BTNode root) {
+
+        List<List<Integer>> levels = new ArrayList<>();
+        List<Integer> ls = new ArrayList<>();
+        ls.add(root.val);
+        levels.add(ls);
+
+        Queue<BTNode> queue = new LinkedList<>();
+        queue.add(root);
+        queue.add(null);
+
+        List<Integer> temp = new ArrayList<>();
+
+        while (!queue.isEmpty()){
+
+            BTNode currNode = queue.poll();
+
+
+            if(currNode==null){
+                if(!queue.isEmpty()){
+                    queue.add(null);
+                    levels.add(temp);
+                    temp = new ArrayList<>();
+                    continue;
+                }
+                break;
+            }
+
+            if(currNode.left!=null) {
+                queue.add(currNode.left);
+                temp.add(currNode.left.val);
+            }
+
+            if(currNode.right!=null) {
+                queue.add(currNode.right);
+                temp.add(currNode.right.val);
+            }
+
+        }
+
+        return levels;
+    }
+
 
 }
+
+
+
+
