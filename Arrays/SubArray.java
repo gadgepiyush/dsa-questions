@@ -5,7 +5,7 @@ public class SubArray {
 
         int arr[] = {1,2,3,4,5,6};
 
-        int arr2 = subArraySum2(arr);
+        int arr2 = subArraySum3(arr);
 
         System.out.println(arr2);
 
@@ -49,6 +49,27 @@ public class SubArray {
                 max = Math.max(subArraySum,max);
 
             }
+        }
+
+        return max;
+    }
+
+
+    //max subArray sum (Kadane's algo) (time complexity O(N))
+    static int subArraySum3(int arr[]){
+
+        int max = Integer.MIN_VALUE;
+        int currSum = 0;
+
+        for(int i=0 ; i<arr.length ; i++){
+            currSum += arr[i];
+
+            if(currSum>max)
+                max=currSum;
+
+            if(currSum<0)
+                currSum=0;
+
         }
 
         return max;
