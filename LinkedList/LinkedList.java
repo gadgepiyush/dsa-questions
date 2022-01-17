@@ -1,4 +1,4 @@
-
+package solvedArchive.LinkedList;
 
 class LinkedList {
     static class Node{

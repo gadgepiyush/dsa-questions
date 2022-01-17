@@ -23,6 +23,8 @@ public class BinaryTreeTraversals {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
+        System.out.println(sizeOfBT(root));
+
     }
 
     //inorder traversal (left -> value -> right)
@@ -66,6 +68,17 @@ public class BinaryTreeTraversals {
         System.out.print(root.val + " -> ");
     }
 
+
+    // counts the number of nodes in the binary tree
+    static int sizeOfBT(BTNode root){
+        if(root==null)
+            return 0;
+
+        int left = sizeOfBT(root.left);
+        int right = sizeOfBT(root.right);
+
+        return left+right+1;
+    }
 
 }
 

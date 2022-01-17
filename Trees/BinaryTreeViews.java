@@ -90,3 +90,21 @@ public class BinaryTreeViews {
 
 
 }
+
+
+
+/*
+
+    //Top view of BT (recursive)
+    static void topView2(BTNode root, int level, int height,Map<Integer,Pair<Integer,Integer>> map){
+
+        if(root==null)
+            return;
+
+
+
+        topView2(root.left, level-1, height, map);
+        topView2(root.right, level+1, height, map);
+
+    }
+*/

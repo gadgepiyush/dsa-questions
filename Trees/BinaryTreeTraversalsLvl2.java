@@ -21,13 +21,13 @@ public class BinaryTreeTraversalsLvl2 {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-//        BinaryTreeViews.topView1(root);
-//        BinaryTreeViews.bottomView1(root);
+        System.out.println(heightOfBT(root));
+
 
     }
 
     // height of BT (Time complexity O(N))
-    static int heightOfBT(BTNode root) {
+    static int heightOfBT(BTNode root){
         if(root==null)
             return 0;
 
@@ -36,6 +36,11 @@ public class BinaryTreeTraversalsLvl2 {
 
         return Math.max(left,right) + 1;
     }
+
+    //width of a BT
+//    static int widthOfBT(BTNode root){
+//
+//    }
 
 
     //level-order traversal (Brute Force) (Time complexity O(N^2))

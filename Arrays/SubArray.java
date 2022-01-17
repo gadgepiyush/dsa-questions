@@ -3,7 +3,7 @@ package solvedArchive.Arrays;
 public class SubArray {
     public static void main(String[] args) {
 
-        int arr[] = {1,2,3,4,5,6};
+        int arr[] = {-11,-2,-3,-4,-1,-5,-6};
 
         int arr2 = subArraySum3(arr);
 
