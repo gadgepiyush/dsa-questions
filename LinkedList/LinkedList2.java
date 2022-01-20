@@ -7,9 +7,9 @@ public class LinkedList2{
         insertNode(n1, 2);
         insertNode(n1, 2);
         insertNode(n1, 1);
-//        insertNode(n1, 7);
-//        insertNode(n1, 5);
-//        insertNode(n1, 6);
+        insertNode(n1, 7);
+        insertNode(n1, 5);
+        insertNode(n1, 6);
         traverse(n1);
         LLNode n2 = removeVal(n1, 2);
         traverse(n2);
@@ -41,12 +41,9 @@ public class LinkedList2{
 
     static LLNode removeVal(LLNode head, int val){
 
-
         if(head.data==val)
             head=head.next;
         removeValHelper(head, val);
-
-
 
         return head;
     }
