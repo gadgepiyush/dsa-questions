@@ -130,7 +130,6 @@ class LinkedList {
 
         }
 
-        
     }
 
     public static void main(String[] args) {
@@ -144,8 +143,6 @@ class LinkedList {
         m1.insertAtEnd(4);
         m1.insertAtEnd(2);
         m1.insertAtEnd(5);
-        m1.traverse();
-
         m1.traverse();
 
 

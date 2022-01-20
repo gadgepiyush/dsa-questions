@@ -21,7 +21,7 @@ public class BinaryTreeTraversalsLvl2 {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-        System.out.println(heightOfBT(root));
+        System.out.println(diameterOfBT1(root));
 
 
     }
@@ -37,8 +37,22 @@ public class BinaryTreeTraversalsLvl2 {
         return Math.max(left,right) + 1;
     }
 
-    //width of a BT
-//    static int widthOfBT(BTNode root){
+    //diameter of a BT (Brute force) (Time complexity O(N^2))
+    static int diameterOfBT1(BTNode root){
+        if(root==null)
+            return 0;
+
+        int d1 = diameterOfBT1(root.left);
+        int d2 = diameterOfBT1(root.right);
+
+        int curr = heightOfBT(root.left) +heightOfBT(root.right) + 1;
+
+        return Math.max(curr, Math.max(d1, d2));
+    }
+
+
+    //diameter of a BT optimized (Time complexity O(N))
+//    static int diameterOfBT2(BTNode root){
 //
 //    }
 
@@ -66,7 +80,6 @@ public class BinaryTreeTraversalsLvl2 {
 
         levelOrderHelper(root.left, level-1);
         levelOrderHelper(root.right, level-1);
-
     }
 
 
@@ -79,6 +92,7 @@ public class BinaryTreeTraversalsLvl2 {
 
         while(!queue.isEmpty()){
             BTNode currNode = queue.poll();
+
             System.out.print(currNode.val+" ");
 
             if(currNode.left!=null)
@@ -108,7 +122,6 @@ public class BinaryTreeTraversalsLvl2 {
         while (!queue.isEmpty()){
 
             BTNode currNode = queue.poll();
-
 
             if(currNode==null){
                 if(!queue.isEmpty()){
