@@ -1,5 +1,4 @@
-package solvedArchive.Trees;
-import java.awt.image.ImageProducer;
+package solvedArchive.BinaryTree;
 import java.util.*;
 
 public class BinaryTreeTraversalsLvl2 {

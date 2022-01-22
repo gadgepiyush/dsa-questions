@@ -1,4 +1,4 @@
-package solvedArchive.Trees;
+package solvedArchive.BinaryTree;
 
 //A custom BinaryTree Node which we'll be using in different traversal methods
 class BTNode {

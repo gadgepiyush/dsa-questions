@@ -1,8 +1,6 @@
-package solvedArchive.Trees;
+package solvedArchive.BinaryTree;
 
 //different methods containing various traversal methods
-
-import java.util.ArrayList;
 
 public class BinaryTreeTraversals {
 

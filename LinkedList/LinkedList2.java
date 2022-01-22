@@ -3,17 +3,15 @@ package solvedArchive.LinkedList;
 public class LinkedList2{
     public static void main(String[] args) {
 
-        LLNode n1 = new LLNode(1);
+        LLNode n1 = new LLNode(2);
         insertNode(n1, 2);
         insertNode(n1, 2);
-        insertNode(n1, 1);
-        insertNode(n1, 7);
+        insertNode(n1, 2);
         insertNode(n1, 5);
         insertNode(n1, 6);
         traverse(n1);
-        LLNode n2 = removeVal(n1, 2);
-        traverse(n2);
-
+        removeDuplicate(n1);
+        traverse(n1);
 
     }
 
@@ -39,6 +37,36 @@ public class LinkedList2{
     }
 
 
+    // prevNode initially will be null when calling the func
+    static LLNode reverse(LLNode currNode, LLNode prevNode){
+        if(currNode==null)
+            return prevNode;
+
+        LLNode temp = currNode.next;
+        currNode.next = prevNode;
+
+        return reverse(temp, currNode);
+    }
+
+
+    //removes duplicate nodes
+    static void removeDuplicate(LLNode head){
+
+        if(head.next==null)
+            return;
+
+        if(head.data == head.next.data) {
+            head.next = head.next.next;
+            removeDuplicate(head);
+        }
+        else {
+
+            removeDuplicate(head.next);
+        }
+    }
+
+
+    //removes all occurrences of the val
     static LLNode removeVal(LLNode head, int val){
 
         if(head.data==val)

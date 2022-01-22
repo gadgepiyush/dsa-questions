@@ -1,4 +1,4 @@
-package solvedArchive.Trees;
+package solvedArchive.BinaryTree;
 import java.util.*;
 
 public class BinaryTreeViews {
