@@ -74,7 +74,6 @@ public class BSTBasic{
 
     //this simply returns leftmost(minimum) node in BST
     static BSTNode deleteHelper(BSTNode root){
-
         if(root.left==null)
             return root;
 
