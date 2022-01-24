@@ -1,9 +1,6 @@
 package solvedArchive.BinarySearchTree;
 
 
-import solvedArchive.BinaryTree.BinaryTreeTraversals;
-import solvedArchive.BinaryTree.BinaryTreeViews;
-
 public class BSTBasic{
     public static void main(String[] args) {
 
@@ -71,6 +68,7 @@ public class BSTBasic{
 
         return root;
     }
+
 
     //this simply returns leftmost(minimum) node in BST
     static BSTNode deleteHelper(BSTNode root){
