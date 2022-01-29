@@ -1,6 +1,8 @@
 package solvedArchive.BinarySearchTree;
 
 
+import java.util.HashSet;
+
 public class BSTBasic{
     public static void main(String[] args) {
 
@@ -11,8 +13,8 @@ public class BSTBasic{
            root = insert(root, i);
         }
 
-        delete(root,5);
-       inOrderTraversal(root);
+        System.out.println(TwoSumInBST.twoSumHashset(root, 19, new HashSet<>()));
+
 
     }
 

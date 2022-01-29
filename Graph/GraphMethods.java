@@ -15,10 +15,11 @@ public class GraphMethods{
         for(int i=0 ; i<edges ; i++){
             int source = sc.nextInt();
             int destination = sc.nextInt();
-            graph.addEdge(source, destination);
+            graph.addEdgeD(source, destination);
         }
 
-        System.out.println(DFSTraversal(0, graph.adj, new boolean[vertex]));
+
+        System.out.println(BFSTraversal(0, graph.adj));
 
     }
 
@@ -40,7 +41,7 @@ public class GraphMethods{
             for(int i : adj.get(curr)){ //add the neighbours of the currNode in the queue is not visited
                 if(!visited[i]){
                     queue.add(i);
-                    visited[i]=true;
+                    visited[i] = true;
                 }
             }
         }
@@ -64,18 +65,18 @@ public class GraphMethods{
         return dfs;
     }
 
-//    static List<Integer> DFSTraversal(){
-//
-//    }
 
-
+    static void graphPrinter(Graph graph){
+        for(int i=0 ; i<graph.adj.size() ; i++){
+            System.out.print(i+" index: ");
+            for(int j=0 ; j<graph.adj.get(i).size() ; j++){
+                System.out.print(graph.adj.get(i).get(j)+" ");
+            }
+            System.out.println();
+        }
+    }
 }
 
-
-/*
-
-
-*/
 
 
 /*5
@@ -88,13 +89,5 @@ public class GraphMethods{
 2 4
 3 4
 
-   static void graphPrinter(Graph graph){
-        for(int i=0 ; i<graph.adj.size() ; i++){
-            System.out.print(i+" index: ");
-            for(int j=0 ; j<graph.adj.get(i).size() ; j++){
-                System.out.print(graph.adj.get(i).get(j)+" ");
-            }
-            System.out.println();
-        }
-    }
+
 */
