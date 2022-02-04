@@ -21,7 +21,7 @@ public class BinaryTreeTraversals {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-        System.out.println(sizeOfBT(root));
+        System.out.println(LowestCommonAncestor.lca(root, 5,6).val);
 
     }
 
