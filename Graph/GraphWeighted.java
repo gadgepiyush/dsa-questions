@@ -8,7 +8,6 @@ import java.util.List;
     index 1 = weight
 */
 
-
 public class GraphWeighted{
 
     List<List<List<Integer>>> adj = new ArrayList<>();

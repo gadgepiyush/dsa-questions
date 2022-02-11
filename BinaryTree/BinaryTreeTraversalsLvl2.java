@@ -20,10 +20,9 @@ public class BinaryTreeTraversalsLvl2 {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-        System.out.println(diameterOfBT1(root));
-
 
     }
+
 
     // height of BT (Time complexity O(N))
     static int heightOfBT(BTNode root){
@@ -34,6 +33,19 @@ public class BinaryTreeTraversalsLvl2 {
         int right =  heightOfBT(root.right);
 
         return Math.max(left,right) + 1;
+    }
+
+    static int minDepthOfBT(BTNode root){
+        if(root==null)
+            return 0;
+
+        int left = minDepthOfBT(root.left);
+        int right = minDepthOfBT(root.right);
+
+        if(left==0 || right==0)    //this condition is there if the tree is skewed
+            return Math.max(left, right);
+
+        return Math.min(left, right);
     }
 
     //diameter of a BT (Brute force) (Time complexity O(N^2))

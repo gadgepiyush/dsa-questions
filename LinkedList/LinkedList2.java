@@ -3,15 +3,15 @@ package solvedArchive.LinkedList;
 public class LinkedList2{
     public static void main(String[] args) {
 
-        LLNode n1 = new LLNode(2);
+        LLNode n1 = new LLNode(1);
         insertNode(n1, 2);
+        insertNode(n1, 3);
+        insertNode(n1, 3);
         insertNode(n1, 2);
-        insertNode(n1, 2);
-        insertNode(n1, 5);
-        insertNode(n1, 6);
+        insertNode(n1, 1);
         traverse(n1);
-        removeDuplicate(n1);
-        traverse(n1);
+
+        System.out.println(palindromeLL(n1));
 
     }
 
@@ -88,6 +88,39 @@ public class LinkedList2{
         else{
             removeValHelper(head.next, val);
         }
+    }
+
+
+    static boolean palindromeLL(LLNode head){
+        LLNode fast = head;
+        LLNode slow = head;
+
+        //finding the mid-point
+        while(fast!=null && fast.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        //reversing the LL from tail to mid-point
+        LLNode prev = null;
+        LLNode curr = slow;
+        while(curr != null){
+            LLNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        //checking the palindrome
+        while(prev != null){
+            if(head.data != prev.data)
+                return false;
+
+            head = head.next;
+            prev = prev.next;
+        }
+
+        return true;
     }
 
 }
