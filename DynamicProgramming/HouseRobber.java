@@ -4,24 +4,24 @@ public class HouseRobber {
     public static void main(String[] args) {
 
         int arr[] = {2,7,9,3,1,100};
-        houseRobber(arr);
+        System.out.println(houseRobber(arr));
     }
 
     //memoization
     static int houseRobber(int arr[]){
 
         int memo[] = new int[arr.length];
-        int x = houseRobberHelper(0, arr, memo);
+        int h1 = houseRobberHelper(0, arr, memo);  //starting from the first house
         for(int i : memo)
             System.out.print(i+" ");
         System.out.println();
 
-        int y = houseRobberHelper(1, arr, memo);
+        int h2 = houseRobberHelper(1, arr, memo);  //starting from the second house
         for(int i : memo)
             System.out.print(i+" ");
         System.out.println();
 
-        return x;
+        return Math.max(h1 ,h2);
     }
 
     static int houseRobberHelper(int i, int arr[], int memo[]){

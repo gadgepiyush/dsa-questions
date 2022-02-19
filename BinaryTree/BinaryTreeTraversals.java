@@ -21,9 +21,10 @@ public class BinaryTreeTraversals {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
-        System.out.println(LowestCommonAncestor.lca(root, 5,6).val);
+
 
     }
+
 
     //inorder traversal (left -> value -> right)
     static void inOrderTraversal(BTNode root){

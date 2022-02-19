@@ -6,12 +6,13 @@ public class LinkedList2{
         LLNode n1 = new LLNode(1);
         insertNode(n1, 2);
         insertNode(n1, 3);
-        insertNode(n1, 3);
-        insertNode(n1, 2);
-        insertNode(n1, 1);
+        insertNode(n1, 4);
+        insertNode(n1, 5);
+        insertNode(n1, 6);
         traverse(n1);
 
-        System.out.println(palindromeLL(n1));
+        traverse(swapNodePosition(n1, 5));
+
 
     }
 
@@ -91,6 +92,7 @@ public class LinkedList2{
     }
 
 
+    //leetcode 234
     static boolean palindromeLL(LLNode head){
         LLNode fast = head;
         LLNode slow = head;
@@ -122,6 +124,78 @@ public class LinkedList2{
 
         return true;
     }
+
+
+    //leetcode 24 Swap Nodes in Pairs
+    static LLNode swapNode(LLNode head){
+        if(head==null || head.next==null)
+            return head;
+
+        LLNode newHead = head.next;
+
+        LLNode temp = head.next.next;
+        head.next.next = head;
+        head.next = temp;
+
+        LLNode prev = head;
+        while(prev.next != null && prev.next.next!=null){
+            LLNode nextNode = prev.next;
+            LLNode nextNextNode = prev.next.next;
+
+            prev.next = nextNextNode;
+            nextNode.next = nextNextNode.next;
+            nextNextNode.next = nextNode;
+
+            prev = nextNode;
+        }
+
+        return newHead;
+    }
+
+
+    //leetcode 1721 Swapping Nodes in a Linked List kth position from start and end
+    static LLNode swapNodePosition(LLNode head, int k){
+
+        LLNode originalHead = head;
+        LLNode temp1 = head;
+
+        int length = 0;
+        while(head!=null){              //finding the length of the linkedlist
+            length++;
+            head = head.next;
+        }
+
+        int i = 1;
+
+        while(i!=k){                    //finding the element at the kth position from start
+            temp1 = temp1.next;
+            i++;
+            length--;
+        }
+
+        LLNode temp2 = temp1;
+        if(i<length){                   //finding the element at kth position from end
+            while (i < length) {
+                temp2 = temp2.next;
+                i++;
+            }
+        }
+        else {                          //finding the element at kth position from start
+            temp2 = originalHead;
+            int pointerHead = 1;
+            while(pointerHead<length){
+                temp2 = temp2.next;
+                pointerHead++;
+            }
+        }
+
+        int temp = temp1.data;          //swapping the obtained node
+        temp1.data = temp2.data;
+        temp2.data = temp;
+
+        return originalHead;
+    }
+
 
 }
 
