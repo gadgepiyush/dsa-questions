@@ -4,14 +4,15 @@ public class LinkedList2{
     public static void main(String[] args) {
 
         LLNode n1 = new LLNode(1);
-        insertNode(n1, 2);
         insertNode(n1, 3);
         insertNode(n1, 4);
-        insertNode(n1, 5);
+        insertNode(n1, 7);
+        insertNode(n1, 1);
+        insertNode(n1, 2);
         insertNode(n1, 6);
         traverse(n1);
 
-        traverse(swapNodePosition(n1, 5));
+        traverse(deleteMiddle(n1));
 
 
     }
@@ -196,6 +197,46 @@ public class LinkedList2{
         return originalHead;
     }
 
+
+    //leetcode 19 Remove Nth Node From End of List
+    static LLNode swapFromEnd(LLNode head, int n){
+        LLNode originalHead = head;
+
+        int backPointer = -1*n;
+        LLNode backNode = head;
+        while(head != null){
+            if(backPointer>0){
+                backNode = backNode.next;
+            }
+            backPointer++;
+            head = head.next;
+        }
+
+        if(originalHead==backNode)
+            return backNode.next;
+
+        backNode.next = backNode.next!=null ? backNode.next.next : null;
+
+        return backPointer>0 ? originalHead : originalHead.next;
+    }
+
+
+    //leetcode 2095 Delete the Middle Node of a Linked List
+    static LLNode deleteMiddle(LLNode head){
+        LLNode fast = head;
+        LLNode slow = head;
+        LLNode prev = null;
+
+        while(fast != null && fast.next!=null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        prev.next = slow.next;
+
+        return head;
+    }
 
 }
 
