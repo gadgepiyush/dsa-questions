@@ -2,6 +2,13 @@ package solvedArchive.RecursionBacktracking;
 
 class RecursionMethods {
 
+    static int powerOfNumber(int a, int n){
+        if(n==1)
+            return a;
+
+        return a * powerOfNumber(a, n-1);
+    }
+
     static long factorial(long n) {
 
         if (n < 1) return 1;
@@ -133,8 +140,7 @@ class RecursionExBasic {
 
     public static void main(String[] args) {
 
-
-
+        System.out.println(RecursionMethods.powerOfNumber(3,3));
     }
 }
 
