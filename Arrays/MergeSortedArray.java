@@ -9,7 +9,7 @@ public class MergeSortedArray {
         int arr1[] = {1,2,3,0,0,0};
         int arr2[] = {2,5,6};
 
-        arrayMerge2(arr1,arr2,3);
+        arrayMerge1(arr1,arr2,3);
 
     }
 
