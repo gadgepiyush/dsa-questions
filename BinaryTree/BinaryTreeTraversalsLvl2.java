@@ -20,6 +20,7 @@ public class BinaryTreeTraversalsLvl2 {
         rightNode.left = new BTNode(5);
         rightNode.right = new BTNode(6);
 
+        BinaryTreeViews.topView1(root);
 
     }
 
