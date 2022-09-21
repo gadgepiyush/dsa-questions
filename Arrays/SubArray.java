@@ -5,7 +5,7 @@ public class SubArray {
 
         int arr[] = {-11,-2,-3,-4,-1,-5,-6};
 
-        int arr2 = subArraySum3(arr);
+        int arr2 = subArraySum1(arr);
 
         System.out.println(arr2);
 
