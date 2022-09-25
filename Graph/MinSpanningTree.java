@@ -21,7 +21,7 @@ public class MinSpanningTree {
         graph.addEdgeUD(1,2,3);
 
 
-        System.out.println(mstKruskal(3, graph.adj));;
+        System.out.println(primsMST(graph.adj));;
     }
 
     //Kruskal's algo (returns the sum of weights of formed MST)
@@ -97,4 +97,64 @@ public class MinSpanningTree {
 
 
     //Prim's algo
+    static int primsMST(List<List<List<Integer>>> adj){
+        System.out.println(adj);
+        int weight = 0;
+        boolean visited[] = new boolean[adj.size()];
+
+        Queue<List<Integer>> pq = new PriorityQueue<>(new Comparator<List<Integer>>() {
+            @Override
+            public int compare(List<Integer> l1, List<Integer> l2) {
+                if(l1.get(1)>l2.get(1))
+                    return 1;
+                else if(l1.get(1)<l2.get(1))
+                    return -1;
+
+                return 0;
+            }
+        });
+
+        List<Integer> temp = new ArrayList<>();
+        temp.add(0); //source
+        temp.add(0); //weight of source is initially zero
+        visited[0] = true;
+
+        pq.add(temp);
+
+        while(!pq.isEmpty()){
+            List<Integer> currNode = pq.poll();
+            visited[currNode.get(0)]  = true;
+            System.out.print(currNode.get(0)+" ");
+
+            int idx = -1;
+            int minDist = Integer.MAX_VALUE;
+            for(List<Integer> nodes : adj.get(currNode.get(0))){
+                //find the min distance
+                if(!visited[nodes.get(0)]){
+                    if(nodes.get(1)<minDist){
+                        idx = nodes.get(0);
+                        minDist = nodes.get(1);
+                    }
+                }
+            }
+
+            if(idx != -1){
+                pq.add(Arrays.asList(idx, minDist));
+            }
+        }
+
+
+        return weight;
+    }
 }
+
+
+/*
+* for(List<List<Integer>> ls : adj)
+            pq.addAll(ls);
+
+        while (!pq.isEmpty()){
+            System.out.println(pq.poll());
+        }
+
+| */

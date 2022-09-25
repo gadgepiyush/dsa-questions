@@ -13,7 +13,7 @@ public class CycleDetection {
         graph.addEdgeD(2,3);
         graph.addEdgeD(0,3);
 
-       // GraphMethods.graphPrinter(graph);
+       //GraphMethods.graphPrinter(graph);
 
         kahnAlgo(graph.adj);
 
@@ -60,7 +60,7 @@ public class CycleDetection {
         for(int i=0 ; i<adj.size() ; i++){
             if(!visited[i]){
                 if(cycleDetectionHelperD(i, visited, dfsVisited, adj))
-                    return true;
+                    return  true;
             }
         }
 
