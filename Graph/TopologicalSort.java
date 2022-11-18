@@ -1,29 +1,61 @@
 package solvedArchive.Graph;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TopologicalSort{
 
     public static void main(String[] args) {
 
-        Graph graph = new Graph(4);
+        Graph graph = new Graph(5);
         graph.addEdgeD(0,1);
         graph.addEdgeD(0,2);
         graph.addEdgeD(1,3);
         graph.addEdgeD(2,3);
+        graph.addEdgeD(4, 2);
 
        int courses[][] = {{1,0},{2,1},{3,2},{4,3},{1,4}};
 
-       for(int i : courseSchedule(5, courses)){
+       for(int i : topologicalSortBFS(5, graph.adj)){
            System.out.print(i+" ");
        }
 
     }
 
-    //topological sorting using BFS
+    //topo sort using dfs
+    static int[] topologicalSortDFS(List<List<Integer>> adj){
+        boolean visited[] = new boolean[adj.size()];
+        Stack<Integer> st = new Stack<>();
+
+        for(int i=0 ; i<adj.size() ; i++){
+            if(!visited[i])
+                helper(i, visited, st, adj);
+
+        }
+
+        int arr[] = new int[adj.size()];
+        for(int i=0 ; i<arr.length ; i++){
+            arr[i] = st.pop();
+        }
+
+
+        return arr;
+    }
+
+
+    static void helper(int currNode, boolean visited[], Stack<Integer> st, List<List<Integer>> adj){
+        visited[currNode] = true;
+
+        for(int i : adj.get(currNode)){
+            if(!visited[i])
+                helper(i, visited, st, adj);
+        }
+
+        st.push(currNode); //push the current vertex after all its neighbours are visited
+    }
+
+
+
+    //topological sorting using BFS (kahn's algo)
     static int[] topologicalSortBFS(int n, List<List<Integer>> adj){
 
         int indegree[] = new int[n];
@@ -58,6 +90,7 @@ public class TopologicalSort{
         }
 
         return answer;
+
     }
 
 

@@ -19,14 +19,13 @@ public class GraphMethods{
         }
 
 
-        System.out.println(BFSTraversal(0, graph.adj));
-
+        //System.out.println(BFSTraversal(0, graph.adj));
+        System.out.println(DFSTraversal(0, graph.adj, new boolean[graph.adj.size()]));
     }
 
 
     //traversing all nodes of the graph using bfs
     static List<Integer> BFSTraversal(int source, List<List<Integer>> adj){
-
         List<Integer> bfs = new ArrayList<>();
         Queue<Integer> queue = new ArrayDeque<>();
         boolean visited[] = new boolean[adj.size()];
@@ -51,17 +50,16 @@ public class GraphMethods{
 
 
     static List<Integer> DFSTraversal(int source, List<List<Integer>> adj, boolean visited[]){
+        if(visited[source])
+            return new ArrayList<>();
 
         List<Integer> dfs = new ArrayList<>();
-        dfs.add(source);
         visited[source] = true;
+        dfs.add(source);
 
         for(int i : adj.get(source)){
-            if(!visited[i]){
-                dfs.addAll(DFSTraversal(i, adj, visited));
-            }
+            dfs.addAll(DFSTraversal(i, adj, visited));
         }
-
         return dfs;
     }
 

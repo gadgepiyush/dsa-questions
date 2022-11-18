@@ -10,12 +10,13 @@ public class CycleDetection {
         Graph graph = new Graph(vertex);
         graph.addEdgeD(0,1);
         graph.addEdgeD(1,2);
+        graph.addEdgeD(1,3);
         graph.addEdgeD(2,3);
         graph.addEdgeD(0,3);
 
        //GraphMethods.graphPrinter(graph);
 
-        kahnAlgo(graph.adj);
+        System.out.println(cycleDetectionD(graph.adj));
 
     }
 
@@ -54,7 +55,7 @@ public class CycleDetection {
     //cycle detection using DFS in directed graph
     static boolean cycleDetectionD(List<List<Integer>> adj){
 
-        boolean visited[] = new boolean[adj.size()];
+       boolean visited[] = new boolean[adj.size()];
         boolean dfsVisited[] = new boolean[adj.size()];
 
         for(int i=0 ; i<adj.size() ; i++){
@@ -69,7 +70,7 @@ public class CycleDetection {
 
     static boolean cycleDetectionHelperD(int currNode, boolean visited[], boolean dfsVisited[],List<List<Integer>> adj){
 
-        visited[currNode] = true;
+       /* visited[currNode] = true;
         dfsVisited[currNode] = true;
 
         for(int i : adj.get(currNode)){
@@ -83,6 +84,22 @@ public class CycleDetection {
         }
 
         dfsVisited[currNode] = false;
+        return false;*/
+
+        visited[currNode] = true;
+        dfsVisited[currNode] = true;
+
+        visited[currNode] = true;
+        for(int i : adj.get(currNode)){
+            if(!visited[i])
+                if(cycleDetectionHelperD(i, visited, dfsVisited, adj))
+                    return true;
+            else if(dfsVisited[i])
+                return false;
+        }
+
+        dfsVisited[currNode] = false;
+
         return false;
     }
 
