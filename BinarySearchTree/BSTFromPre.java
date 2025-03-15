@@ -9,11 +9,11 @@ public class BSTFromPre{
     }
 
 
-    static BSTNode bstFromPreorder(int start, int end, int preOrder[]){
+    static TreeNode bstFromPreorder(int start, int end, int preOrder[]){
         if(start>end)
             return null;
 
-        BSTNode root = new BSTNode(preOrder[start]);
+        TreeNode root = new TreeNode(preOrder[start]);
 
         int idx = start+1;
         while(idx<=end){

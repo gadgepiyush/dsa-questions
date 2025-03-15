@@ -1,29 +1,29 @@
 package solvedArchive.BinaryTree;
 
 public class LinkedListFromLeafNodes {
-    static BTNode head = null;
-    static BTNode curr = null;
+    static TreeNode head = null;
+    static TreeNode curr = null;
 
     public static void main(String[] args) {
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
 
-        BTNode leftNode = root.left;
-        BTNode rightNode = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        leftNode.left = new BTNode(4);
-        leftNode.right = new BTNode(7);
+        leftNode.left = new TreeNode(4);
+        leftNode.right = new TreeNode(7);
 
-        leftNode.left.left = new BTNode(8);
+        leftNode.left.left = new TreeNode(8);
 
-        rightNode.left = new BTNode(5);
-        rightNode.right = new BTNode(6);
+        rightNode.left = new TreeNode(5);
+        rightNode.right = new TreeNode(6);
 
         traverseLL(llFromLeaf(root));
     }
 
-    static BTNode llFromLeaf(BTNode root){
+    static TreeNode llFromLeaf(TreeNode root){
 
         helper(root);
 
@@ -31,7 +31,7 @@ public class LinkedListFromLeafNodes {
     }
 
 
-    static void helper(BTNode root){
+    static void helper(TreeNode root){
         if(root==null)
             return;
 
@@ -51,7 +51,7 @@ public class LinkedListFromLeafNodes {
     }
 
 
-    static void traverseLL(BTNode head){
+    static void traverseLL(TreeNode head){
         while(head!=null){
             System.out.print(head.val+" ");
             head = head.left;

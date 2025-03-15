@@ -6,20 +6,20 @@ public class BinaryTreeTraversals {
 
     public static void main(String[] args) {
 
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
 
-        BTNode leftNode = root.left;
-        BTNode rightNode = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        leftNode.left = new BTNode(4);
-        leftNode.right = new BTNode(7);
+        leftNode.left = new TreeNode(4);
+        leftNode.right = new TreeNode(7);
 
-        leftNode.left.left = new BTNode(8);
+        leftNode.left.left = new TreeNode(8);
 
-        rightNode.left = new BTNode(5);
-        rightNode.right = new BTNode(6);
+        rightNode.left = new TreeNode(5);
+        rightNode.right = new TreeNode(6);
 
 
 
@@ -27,7 +27,7 @@ public class BinaryTreeTraversals {
 
 
     //inorder traversal (left -> value -> right)
-    static void inOrderTraversal(BTNode root){
+    static void inOrderTraversal(TreeNode root){
 
         if(root==null)  return;
 
@@ -41,7 +41,7 @@ public class BinaryTreeTraversals {
 
 
     //preorder traversal (value -> left -> right)
-    static void preOrderTraversal(BTNode root){
+    static void preOrderTraversal(TreeNode root){
 
         if(root==null)  return;
 
@@ -55,7 +55,7 @@ public class BinaryTreeTraversals {
 
 
     //postorder traversal (left -> right -> value)
-    static void postOrderTraversal(BTNode root){
+    static void postOrderTraversal(TreeNode root){
 
         if(root==null)  return;
 
@@ -69,7 +69,7 @@ public class BinaryTreeTraversals {
 
 
     // counts the number of nodes in the binary tree
-    static int sizeOfBT(BTNode root){
+    static int sizeOfBT(TreeNode root){
         if(root==null)
             return 0;
 

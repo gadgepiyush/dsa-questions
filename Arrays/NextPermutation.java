@@ -14,35 +14,35 @@ public class NextPermutation {
         if(arr.length==1)
             return;
 
-        //step 1 find idx1
-        int idx1 = -1;
+        //step 1 find inflection point (i.e. the point where value of i-1 < i)
+        int toSwap = -1;
         for(int i=arr.length-2 ; i>=0 ; i--){
             if(arr[i] < arr[i+1]){
-                idx1 = i;
+                toSwap = i;
                 break;
             }
         }
 
 
-        //step 2 find idx2
-        int idx2 = 0;
-        if(idx1<0){
+        //step 2 find the index of the number just before when number is becoming less then the number ar idx1
+        int swapWith = 0;
+        if(toSwap<0){ // if it is the last permutation just reverse the whole array
             reverse(arr, 0, arr.length-1);
         }
         else{
             for(int i = arr.length-1 ; i>=0 ; i--){
-                if(arr[i] > arr[idx1]){
-                    idx2 = i;
+                if(arr[i] > arr[toSwap]){
+                    swapWith = i;
                     break;
                 }
             }
         }
 
-        int temp = arr[idx1];
-        arr[idx1] = arr[idx2];
-        arr[idx2] = temp;
+        int temp = arr[toSwap];
+        arr[toSwap] = arr[swapWith];
+        arr[swapWith] = temp;
 
-        reverse(arr, idx1+1, arr.length-1);
+        reverse(arr, toSwap+1, arr.length-1);
 
     }
 

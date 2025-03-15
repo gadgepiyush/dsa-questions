@@ -2,7 +2,7 @@ package solvedArchive.BinarySearchTree;
 
 public class LowestCommonAncestor {
 
-    static BSTNode lca(BSTNode root, int i, int j){
+    static TreeNode lca(TreeNode root, int i, int j){
 
         if(root==null)
             return null;

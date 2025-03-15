@@ -15,11 +15,11 @@ public class BuildBinaryTree{
     }
 
 
-    static BTNode helper(int preStart, int inStart, int inEnd, int pre[], int in[], HashMap<Integer,Integer> map){
+    static TreeNode helper(int preStart, int inStart, int inEnd, int pre[], int in[], HashMap<Integer,Integer> map){
         if(preStart>=pre.length || inStart>inEnd)
             return null;
 
-        BTNode root = new BTNode(pre[preStart]);
+        TreeNode root = new TreeNode(pre[preStart]);
 
         int inIndex = map.get(root.val);
 

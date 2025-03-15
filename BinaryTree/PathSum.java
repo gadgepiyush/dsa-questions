@@ -10,23 +10,23 @@ import java.util.List;
 
 public class PathSum {
     public static void main(String[] args) {
-        BTNode root = new BTNode(5);
-        root.left = new BTNode(4);
-        root.left.left = new BTNode(11);
-        root.left.left.left = new BTNode(7);
-        root.left.left.right = new BTNode(2);
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(4);
+        root.left.left = new TreeNode(11);
+        root.left.left.left = new TreeNode(7);
+        root.left.left.right = new TreeNode(2);
 
-        root.right = new BTNode(8);
-        root.right.left = new BTNode(13);
-        root.right.right = new BTNode(4);
-        root.right.right.left = new BTNode(5);
-        root.right.right.right = new BTNode(1);
+        root.right = new TreeNode(8);
+        root.right.left = new TreeNode(13);
+        root.right.right = new TreeNode(4);
+        root.right.right.left = new TreeNode(5);
+        root.right.right.right = new TreeNode(1);
 
         System.out.println(pathSum(root, 22, new ArrayList<>()));
     }
 
     //leetcode 113
-    static List<List<Integer>> pathSum(BTNode root, int currSum, List<Integer> list){
+    static List<List<Integer>> pathSum(TreeNode root, int currSum, List<Integer> list){
         if(root==null)
             return new ArrayList<>();
 

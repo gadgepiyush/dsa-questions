@@ -2,12 +2,12 @@ package solvedArchive.BinaryTree;
 
 public class BinaryTreeMethods {
 
-    static boolean SymmetricTree(BTNode root){
+    static boolean SymmetricTree(TreeNode root){
 
         return root==null || SymmetricTreeHelper(root.left, root.right);
     }
 
-    static boolean SymmetricTreeHelper(BTNode left, BTNode right){
+    static boolean SymmetricTreeHelper(TreeNode left, TreeNode right){
 
         if(left==null || right==null)
             return left==right;

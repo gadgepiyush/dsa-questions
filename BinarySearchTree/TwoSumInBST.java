@@ -4,7 +4,7 @@ import java.util.*;
 public class TwoSumInBST {
 
     //two sum by doing inorder traversal and operating the returned list
-    static boolean twoSum(BSTNode root, int target){
+    static boolean twoSum(TreeNode root, int target){
 
         List<Integer> ls = new ArrayList<>();
         inOrderTraversal(root, ls);
@@ -26,7 +26,7 @@ public class TwoSumInBST {
         return false;
     }
 
-    static void inOrderTraversal(BSTNode root ,List<Integer> ls){
+    static void inOrderTraversal(TreeNode root , List<Integer> ls){
         if(root==null)
             return;
 
@@ -39,7 +39,7 @@ public class TwoSumInBST {
 
 
     //two sum using hashset
-    static boolean twoSumHashset(BSTNode root, int target, Set<Integer> set){
+    static boolean twoSumHashset(TreeNode root, int target, Set<Integer> set){
 
         if(root==null || root.val>target)
             return false;

@@ -5,7 +5,7 @@ public class BinaryTreeViews {
 
     //Left view of BT (Time complexity O(N))
     //we're doing simple recursive traversal, just checking the level is visited the first time if yes then add the val
-    static void leftView(BTNode root, int level, List<Integer> ls){
+    static void leftView(TreeNode root, int level, List<Integer> ls){
 
         if(root==null)  return;
 
@@ -19,11 +19,11 @@ public class BinaryTreeViews {
 
     //Top view of BT (iterative)
     //using simple level order traversal and maintaining the queue containing (node, level) pair
-    static void topView1(BTNode root){
+    static void topView1(TreeNode root){
         class Pair{
-            BTNode node;
+            TreeNode node;
             int level;
-            Pair(BTNode node, int level){
+            Pair(TreeNode node, int level){
                 this.node = node;
                 this.level = level;
             }
@@ -53,12 +53,12 @@ public class BinaryTreeViews {
 
     //Bottom view of BT (iterative)
     //only change is we use "put" instead of "putIfAbsent" just to get the bottom most node of that level
-    static void bottomView1(BTNode root){
+    static void bottomView1(TreeNode root){
 
         class Pair{
-            BTNode node;
+            TreeNode node;
             int level;
-            Pair(BTNode node,  int level){
+            Pair(TreeNode node, int level){
                 this.node = node;
                 this.level = level;
             }

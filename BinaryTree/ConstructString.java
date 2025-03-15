@@ -2,10 +2,10 @@ package solvedArchive.BinaryTree;
 
 public class ConstructString{
     public static void main(String[] args) {
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.left.right = new BTNode(4);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.right = new TreeNode(3);
 
         StringBuilder sb = new StringBuilder();
        // sb.append("");
@@ -14,7 +14,7 @@ public class ConstructString{
 
     }
 
-    static String helper(BTNode root){
+    static String helper(TreeNode root){
         if(root==null)
             return "";
 

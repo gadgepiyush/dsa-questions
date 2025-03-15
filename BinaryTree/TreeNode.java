@@ -1,12 +1,12 @@
 package solvedArchive.BinaryTree;
 
 //A custom BinaryTree Node which we'll be using in different traversal methods
-class BTNode {
+class TreeNode {
     int val;
-    BTNode left;
-    BTNode right;
+    TreeNode left;
+    TreeNode right;
 
-    public BTNode(int x){
+    public TreeNode(int x){
         this.val = x;
         left = null;
         right = null;

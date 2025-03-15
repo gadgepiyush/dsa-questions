@@ -1,12 +1,12 @@
 package solvedArchive.LinkedList;
 
 //Custom Singly LinkedList Node
-public class LLNode{
+public class ListNode {
 
     int data;
-    LLNode next;
+    ListNode next;
 
-    LLNode(int data){
+    ListNode(int data){
         this.data = data;
     }
 }

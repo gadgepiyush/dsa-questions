@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Subsets{
     public static void main(String[] args) {
-        int arr[] = {1, 2, 2};
+        int arr[] = {1, 2, 3};
 
         List<List<Integer>> lists = new ArrayList<>();
 
-        subsetsWithDup(arr, 0, new ArrayList<>(), lists);
+        helper(arr, 0, new ArrayList<>(), lists);
         System.out.println(lists);
     }
 
@@ -40,5 +40,18 @@ public class Subsets{
         }
 
         subsetsWithDup(arr, i+1, temp, temp2);
+    }
+
+    static void helper(int arr[], int i, List<Integer> curr, List<List<Integer>> list){
+        if(i==arr.length){
+            list.add(new ArrayList<>(curr));
+            return;
+        }
+
+        curr.add(arr[i]);
+        helper(arr, i+1, curr, list);
+        curr.remove(curr.size()-1);
+
+        helper(arr, i+1, curr, list);
     }
 }

@@ -2,21 +2,21 @@ package solvedArchive.LinkedList;
 
 public class PalindromeLL {
     public static void main(String[] args) {
-        LLNode head = new LLNode(1);
-        head.next = new LLNode(2);
-        head.next.next = new LLNode(3);
-        head.next.next.next = new LLNode(4);
-        head.next.next.next.next = new LLNode(2);
-        head.next.next.next.next.next = new LLNode(2);
-        head.next.next.next.next.next.next = new LLNode(1);
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(2);
+        head.next.next.next.next.next = new ListNode(2);
+        head.next.next.next.next.next.next = new ListNode(1);
 
         System.out.println(isPalindrome(head));
     }
 
-    static boolean isPalindrome(LLNode head){
+    static boolean isPalindrome(ListNode head){
 
-        LLNode slow = head;
-        LLNode fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
         //find midpoint
         while (fast != null && fast.next != null){
@@ -24,12 +24,12 @@ public class PalindromeLL {
             slow = slow.next;
         }
 
-        LLNode curr = slow;
-        LLNode prev = null;
+        ListNode curr = slow;
+        ListNode prev = null;
 
         //reverse LL from mid
         while(curr!=null){
-            LLNode temp = curr.next;
+            ListNode temp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = temp;

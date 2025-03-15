@@ -7,28 +7,28 @@ import java.util.Stack;
 public class FlattenBT {
 
     public static void main(String[] args) {
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
 
-        BTNode leftNode = root.left;
-        BTNode rightNode = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        leftNode.left = new BTNode(4);
-        leftNode.right = new BTNode(7);
+        leftNode.left = new TreeNode(4);
+        leftNode.right = new TreeNode(7);
 
-        leftNode.left.left = new BTNode(8);
+        leftNode.left.left = new TreeNode(8);
 
-        rightNode.left = new BTNode(5);
-        rightNode.right = new BTNode(6);
+        rightNode.left = new TreeNode(5);
+        rightNode.right = new TreeNode(6);
 
         flattenBT(root);
 
         BinaryTreeTraversals.preOrderTraversal(root);
     }
 
-    static BTNode prev = null;
-    static void flattenBT(BTNode root){
+    static TreeNode prev = null;
+    static void flattenBT(TreeNode root){
         if(root==null)
             return;
 
@@ -40,15 +40,15 @@ public class FlattenBT {
         prev = root;
     }
 
-    static void flattenBT2(BTNode root){
+    static void flattenBT2(TreeNode root){
         if(root==null)
             return;
 
-        Stack<BTNode> st = new Stack<>();
+        Stack<TreeNode> st = new Stack<>();
         st.push(root);
 
         while(st.isEmpty()){
-            BTNode currNode = st.pop();
+            TreeNode currNode = st.pop();
 
             if(currNode.right != null)
                 st.push(currNode.right);

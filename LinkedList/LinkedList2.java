@@ -3,7 +3,7 @@ package solvedArchive.LinkedList;
 public class LinkedList2{
     public static void main(String[] args) {
 
-        LLNode n1 = new LLNode(1);
+        ListNode n1 = new ListNode(1);
         insertNode(n1, 3);
         insertNode(n1, 4);
         insertNode(n1, 7);
@@ -17,9 +17,9 @@ public class LinkedList2{
 
     }
 
-    static void insertNode(LLNode head, int val){
+    static void insertNode(ListNode head, int val){
         if(head.next==null){
-            head.next = new LLNode(val);
+            head.next = new ListNode(val);
             return;
         }
 
@@ -27,7 +27,7 @@ public class LinkedList2{
     }
 
 
-    static void traverse(LLNode head){
+    static void traverse(ListNode head){
         if(head==null){
             System.out.println("null");
             return;
@@ -40,11 +40,11 @@ public class LinkedList2{
 
 
     // prevNode initially will be null when calling the func
-    static LLNode reverse(LLNode currNode, LLNode prevNode){
+    static ListNode reverse(ListNode currNode, ListNode prevNode){
         if(currNode==null)
             return prevNode;
 
-        LLNode temp = currNode.next;
+        ListNode temp = currNode.next;
         currNode.next = prevNode;
 
         return reverse(temp, currNode);
@@ -52,7 +52,7 @@ public class LinkedList2{
 
 
     //removes duplicate nodes
-    static void removeDuplicate(LLNode head){
+    static void removeDuplicate(ListNode head){
 
         if(head.next==null)
             return;
@@ -69,7 +69,7 @@ public class LinkedList2{
 
 
     //removes all occurrences of the val
-    static LLNode removeVal(LLNode head, int val){
+    static ListNode removeVal(ListNode head, int val){
 
         if(head.data==val)
             head=head.next;
@@ -78,7 +78,7 @@ public class LinkedList2{
         return head;
     }
 
-    static void removeValHelper(LLNode head, int val){
+    static void removeValHelper(ListNode head, int val){
 
         if(head==null)
             return;
@@ -94,9 +94,9 @@ public class LinkedList2{
 
 
     //leetcode 234
-    static boolean palindromeLL(LLNode head){
-        LLNode fast = head;
-        LLNode slow = head;
+    static boolean palindromeLL(ListNode head){
+        ListNode fast = head;
+        ListNode slow = head;
 
         //finding the mid-point
         while(fast!=null && fast.next!=null){
@@ -105,10 +105,10 @@ public class LinkedList2{
         }
 
         //reversing the LL from tail to mid-point
-        LLNode prev = null;
-        LLNode curr = slow;
+        ListNode prev = null;
+        ListNode curr = slow;
         while(curr != null){
-            LLNode temp = curr.next;
+            ListNode temp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = temp;
@@ -128,20 +128,20 @@ public class LinkedList2{
 
 
     //leetcode 24 Swap Nodes in Pairs
-    static LLNode swapNode(LLNode head){
+    static ListNode swapNode(ListNode head){
         if(head==null || head.next==null)
             return head;
 
-        LLNode newHead = head.next;
+        ListNode newHead = head.next;
 
-        LLNode temp = head.next.next;
+        ListNode temp = head.next.next;
         head.next.next = head;
         head.next = temp;
 
-        LLNode prev = head;
+        ListNode prev = head;
         while(prev.next != null && prev.next.next!=null){
-            LLNode nextNode = prev.next;
-            LLNode nextNextNode = prev.next.next;
+            ListNode nextNode = prev.next;
+            ListNode nextNextNode = prev.next.next;
 
             prev.next = nextNextNode;
             nextNode.next = nextNextNode.next;
@@ -155,10 +155,10 @@ public class LinkedList2{
 
 
     //leetcode 1721 Swapping Nodes in a Linked List kth position from start and end
-    static LLNode swapNodePosition(LLNode head, int k){
+    static ListNode swapNodePosition(ListNode head, int k){
 
-        LLNode originalHead = head;
-        LLNode temp1 = head;
+        ListNode originalHead = head;
+        ListNode temp1 = head;
 
         int length = 0;
         while(head!=null){              //finding the length of the linkedlist
@@ -174,7 +174,7 @@ public class LinkedList2{
             length--;
         }
 
-        LLNode temp2 = temp1;
+        ListNode temp2 = temp1;
         if(i<length){                   //finding the element at kth position from end
             while (i < length) {
                 temp2 = temp2.next;
@@ -199,11 +199,11 @@ public class LinkedList2{
 
 
     //leetcode 19 Remove Nth Node From End of List
-    static LLNode swapFromEnd(LLNode head, int n){
-        LLNode originalHead = head;
+    static ListNode swapFromEnd(ListNode head, int n){
+        ListNode originalHead = head;
 
         int backPointer = -1*n;
-        LLNode backNode = head;
+        ListNode backNode = head;
         while(head != null){
             if(backPointer>0){
                 backNode = backNode.next;
@@ -222,10 +222,10 @@ public class LinkedList2{
 
 
     //leetcode 2095 Delete the Middle Node of a Linked List
-    static LLNode deleteMiddle(LLNode head){
-        LLNode fast = head;
-        LLNode slow = head;
-        LLNode prev = null;
+    static ListNode deleteMiddle(ListNode head){
+        ListNode fast = head;
+        ListNode slow = head;
+        ListNode prev = null;
 
         while(fast != null && fast.next!=null){
             prev = slow;

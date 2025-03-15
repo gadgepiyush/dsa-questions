@@ -4,14 +4,14 @@ import java.util.*;
 //leetcode 46
 public class Permutations {
     public static void main(String[] args) {
-//        int arr[] = {1, 2, 3};
+        int arr[] = {1, 2, 3};
 //        List<List<Integer>> temp = new ArrayList<>();
 //
 //        permutationArray(arr, new ArrayList<>(), temp);
 //        System.out.println(temp);
 
 
-        permutationsString("abc", 0);
+        System.out.println(permute(arr));
     }
 
     //approach 1
@@ -54,6 +54,30 @@ public class Permutations {
         arr[j] = temp;
 
         return String.copyValueOf(arr);
+    }
+
+    static List<List<Integer>> permute(int arr[]){
+        List<List<Integer>> list = new ArrayList<>();
+
+        helper(arr, new ArrayList<>() ,list);
+
+        return list;
+    }
+
+    static void helper(int arr[], List<Integer> currList ,List<List<Integer>> list){
+        if(currList.size()==arr.length){
+            list.add(new ArrayList<>(currList));
+        }
+
+        for(int j=0 ; j<arr.length ; j++){
+            if(currList.contains(arr[j])){
+                continue;
+            }
+            currList.add(arr[j]);
+            helper(arr, currList, list);
+            currList.remove(currList.size()-1);
+        }
+
     }
 
 }

@@ -3,8 +3,8 @@ package solvedArchive.LinkedList;
 public class MergeLinkedList {
 
     public static void main(String[] args) {
-        LLNode n1 = new LLNode(1);
-        LLNode n2 = new LLNode(1);
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(1);
 
         LinkedList2.insertNode(n1, 2);
         LinkedList2.insertNode(n1, 4);
@@ -15,7 +15,7 @@ public class MergeLinkedList {
         LinkedList2.traverse(LLMerge(n1,n2));
     }
 
-    static LLNode LLMerge(LLNode n1, LLNode n2){
+    static ListNode LLMerge(ListNode n1, ListNode n2){
 
         if(n1==null)
             return n2;
@@ -24,7 +24,7 @@ public class MergeLinkedList {
         else if(n1==null && n2==null)
             return null;
 
-        LLNode head = null;
+        ListNode head = null;
 
         if(n1.data < n2.data){
             head=n1;
@@ -35,7 +35,7 @@ public class MergeLinkedList {
             n2 = n2.next;
         }
 
-        LLNode currNode = head;
+        ListNode currNode = head;
         while(n1!=null && n2 !=null){
             if(n1.data < n2.data){
                 currNode.next = n1;

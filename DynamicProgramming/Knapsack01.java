@@ -1,13 +1,22 @@
 package solvedArchive.DynamicProgramming;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Knapsack01{
     public static void main(String[] args) {
 
-        int arr[] = {1,1,1,1,1};
-        System.out.println(targetSum(0, 0, 3, arr, new HashMap<>()));
+        int val[] = {1,3,4,5};
+        int weight[] = {1,4,5,7};
+
+        int w = 7;
+        int memo[][] = new int[weight.length+1][w+1];
+        System.out.println(knapsackDP(0, w, val, weight, memo));
+
+        for(int i[]: memo){
+            for (int j : i)
+                System.out.print(j + " ");
+            System.out.println();
+        }
     }
 
     //naive recursive code
@@ -46,31 +55,24 @@ public class Knapsack01{
         return ans;
     }
 
+    static int knapsackTab(int[] weight, int[] value, int n, int w) {
+        int[][] dp = new int[n + 1][w + 1];
 
-    //given a sum find if the array subset can make that sum
-    static boolean subsetSum(int i, int currSum , int arr[], int memo[][]){
+        for (int i = 1; i <= n; i++) {
+            for (int capacity=1; capacity<=w; capacity++) {
+                if (weight[i-1] <= capacity) {
+                    // Include the item: take value and reduce weight
+                    // Exclude the item: do not take value
+                    dp[i][capacity] = Math.max(value[i-1] + dp[i-1][capacity-weight[i-1]], dp[i-1][capacity]);
+                } else {
+                    // Cannot include the item
+                    dp[i][capacity] = dp[i-1][capacity];
+                }
+            }
+        }
 
-        if(currSum==0)
-            return true;
-
-        if(i==arr.length)
-            return false;
-
-        if(memo[i][currSum]!=0)
-            return memo[i][currSum]==2 ? true : false;
-
-
-        boolean exclude = subsetSum(i+1, currSum, arr, memo);
-
-        boolean include = false;
-        if(arr[i]<=currSum)
-            include = subsetSum(i+1, currSum-arr[i], arr, memo);
-
-        memo[i][currSum] = exclude || include ? 2 : 1;
-
-        return exclude || include;
+        return dp[n][w];
     }
-
 
     //leetcode 416
     static boolean partitionSubset(int arr[]){

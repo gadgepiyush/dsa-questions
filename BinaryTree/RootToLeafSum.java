@@ -6,20 +6,20 @@ import java.util.List;
 //leetcode 129
 public class RootToLeafSum {
     public static void main(String[] args) {
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
 
-        BTNode leftNode = root.left;
-        BTNode rightNode = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        leftNode.left = new BTNode(4);
-        leftNode.right = new BTNode(7);
+        leftNode.left = new TreeNode(4);
+        leftNode.right = new TreeNode(7);
 
-        leftNode.left.left = new BTNode(8);
+        leftNode.left.left = new TreeNode(8);
 
-        rightNode.left = new BTNode(5);
-        rightNode.right = new BTNode(6);
+        rightNode.left = new TreeNode(5);
+        rightNode.right = new TreeNode(6);
 
         List<Integer> x = new ArrayList<>();
         helper(root, 0, x);
@@ -27,7 +27,7 @@ public class RootToLeafSum {
 
     }
 
-    static void helper(BTNode root, int x, List<Integer> ls){
+    static void helper(TreeNode root, int x, List<Integer> ls){
         if(root.left==null && root.right==null){
             ls.add(root.val +x*10);
             return;

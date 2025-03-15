@@ -29,7 +29,6 @@ public class TopologicalSort{
         for(int i=0 ; i<adj.size() ; i++){
             if(!visited[i])
                 helper(i, visited, st, adj);
-
         }
 
         int arr[] = new int[adj.size()];

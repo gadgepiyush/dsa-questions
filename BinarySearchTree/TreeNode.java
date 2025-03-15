@@ -1,12 +1,12 @@
 package solvedArchive.BinarySearchTree;
 
-public class BSTNode {
+public class TreeNode {
 
-    BSTNode left;
-    BSTNode right;
+    TreeNode left;
+    TreeNode right;
     int val;
 
-    BSTNode(int val){
+    TreeNode(int val){
         this.val = val;
     }
 

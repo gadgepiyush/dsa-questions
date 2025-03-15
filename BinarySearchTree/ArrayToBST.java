@@ -9,7 +9,7 @@ public class ArrayToBST {
         BSTBasic.inOrderTraversal(arrayToBST(arr));
     }
 
-    static BSTNode arrayToBST(int arr[]){
+    static TreeNode arrayToBST(int arr[]){
         if(arr.length==0)
             return null;
 
@@ -17,12 +17,12 @@ public class ArrayToBST {
     }
 
     //using binary search
-    static BSTNode helper(int start, int end, int arr[]){
+    static TreeNode helper(int start, int end, int arr[]){
         if(start>end)
             return null;
 
         int mid = (start+end)/2;
-        BSTNode currNode = new BSTNode(arr[mid]);
+        TreeNode currNode = new TreeNode(arr[mid]);
         currNode.left = helper(start, mid-1, arr);
         currNode.right = helper(mid+1, end, arr);
 

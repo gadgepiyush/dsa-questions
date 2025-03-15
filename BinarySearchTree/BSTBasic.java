@@ -7,7 +7,7 @@ public class BSTBasic{
     public static void main(String[] args) {
 
         int arr[] = {6,5,1,3,2,8,7,9};
-        BSTNode root = null;
+        TreeNode root = null;
 
         for(int i : arr){
            root = insert(root, i);
@@ -20,7 +20,7 @@ public class BSTBasic{
 
 
     //this could also be done by doing inorder traversal and checking the values coming out are sorted
-    static boolean isValidBST(BSTNode root, int min, int max){
+    static boolean isValidBST(TreeNode root, int min, int max){
         if(root==null)
             return true;
 
@@ -31,10 +31,10 @@ public class BSTBasic{
     }
 
 
-    static BSTNode insert(BSTNode root, int value){
+    static TreeNode insert(TreeNode root, int value){
 
         if(root==null)
-            return new BSTNode(value);
+            return new TreeNode(value);
 
         if(root.val>value)
             root.left = insert(root.left, value);
@@ -45,7 +45,7 @@ public class BSTBasic{
     }
 
 
-    static BSTNode delete(BSTNode root, int key){
+    static TreeNode delete(TreeNode root, int key){
 
         if(root==null)
             return null;
@@ -62,7 +62,7 @@ public class BSTBasic{
             else if(root.right==null)
                 return root.left;
 
-            BSTNode temp = deleteHelper(root.right);   //this method returns the inorder successor
+            TreeNode temp = deleteHelper(root.right);   //this method returns the inorder successor
             root.val = temp.val;                       //copying the value of inorder successor in the node
             root.right = delete(root.right, temp.val); // deleting the inorder successor
 
@@ -73,7 +73,7 @@ public class BSTBasic{
 
 
     //this simply returns leftmost(minimum) node in BST
-    static BSTNode deleteHelper(BSTNode root){
+    static TreeNode deleteHelper(TreeNode root){
         if(root.left==null)
             return root;
 
@@ -81,7 +81,7 @@ public class BSTBasic{
     }
 
 
-    static BSTNode search(BSTNode root, int value){
+    static TreeNode search(TreeNode root, int value){
 
         if (root==null || root.val==value)
             return root;
@@ -97,7 +97,7 @@ public class BSTBasic{
 
 
     //inorder traversal (left -> value -> right)
-    static void inOrderTraversal(BSTNode root){
+    static void inOrderTraversal(TreeNode root){
 
         if(root==null)  return;
 

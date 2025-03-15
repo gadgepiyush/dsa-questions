@@ -2,17 +2,17 @@ package solvedArchive.LinkedList;
 
 public class RotateList {
     public static void main(String[] args) {
-        LLNode head = new LLNode(1);
-        head.next = new LLNode(2);
-        head.next.next = new LLNode(3);
-        head.next.next.next = new LLNode(4);
-        head.next.next.next.next = new LLNode(5);
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
 
         traverse(rotateRight(head, 6));
 
     }
 
-    static void traverse(LLNode head){
+    static void traverse(ListNode head){
         if(head==null)
             return;
 
@@ -22,9 +22,9 @@ public class RotateList {
     }
 
 
-    static LLNode rotateRight(LLNode head, int k){
+    static ListNode rotateRight(ListNode head, int k){
         int length = 0;
-        LLNode temp = head;
+        ListNode temp = head;
 
         while(temp!= null) {
             temp = temp.next;
@@ -38,8 +38,8 @@ public class RotateList {
         System.out.println(k);
 
         int back = -1*k + 1;
-        LLNode frontNode = head;
-        LLNode backNode = head;
+        ListNode frontNode = head;
+        ListNode backNode = head;
 
 
         while(frontNode.next != null){

@@ -5,28 +5,30 @@ public class BinaryTreeTraversalsLvl2 {
 
     public static void main(String[] args) {
 
-        BTNode root = new BTNode(1);
-        root.left = new BTNode(2);
-        root.right = new BTNode(3);
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
 
-        BTNode leftNode = root.left;
-        BTNode rightNode = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        leftNode.left = new BTNode(4);
-        leftNode.right = new BTNode(7);
+       // leftNode.left = new TreeNode(4);
+        //leftNode.right = new TreeNode(7);
 
-        leftNode.left.left = new BTNode(8);
+        //leftNode.left.left = new TreeNode(8);
 
-        rightNode.left = new BTNode(5);
-        rightNode.right = new BTNode(6);
+        rightNode.left = new TreeNode(15);
+        rightNode.right = new TreeNode(7);
 
-        BinaryTreeViews.topView1(root);
+        //levelOrderTraversalNew(root);
+
+        System.out.println(levelOrderTraversalNew(root));
 
     }
 
 
     // height of BT (Time complexity O(N))
-    static int heightOfBT(BTNode root){
+    static int heightOfBT(TreeNode root){
         if(root==null)
             return 0;
 
@@ -36,7 +38,7 @@ public class BinaryTreeTraversalsLvl2 {
         return Math.max(left,right) + 1;
     }
 
-    static int minDepthOfBT(BTNode root){
+    static int minDepthOfBT(TreeNode root){
         if(root==null)
             return 0;
 
@@ -50,7 +52,7 @@ public class BinaryTreeTraversalsLvl2 {
     }
 
     //diameter of a BT (Brute force) (Time complexity O(N^2))
-    static int diameterOfBT1(BTNode root){
+    static int diameterOfBT1(TreeNode root){
         if(root==null)
             return 0;
 
@@ -70,7 +72,7 @@ public class BinaryTreeTraversalsLvl2 {
 
 
     //level-order traversal (Brute Force) (Time complexity O(N^2))
-    static void levelOrderTraversal1(BTNode root){
+    static void levelOrderTraversal1(TreeNode root){
 
         int height = heightOfBT(root);
 
@@ -81,7 +83,7 @@ public class BinaryTreeTraversalsLvl2 {
     }
 
     //helper for the brute force approach
-    static void levelOrderHelper(BTNode root, int level){
+    static void levelOrderHelper(TreeNode root, int level){
 
         if(root==null)  return;
 
@@ -96,14 +98,14 @@ public class BinaryTreeTraversalsLvl2 {
 
 
     //level-order traversal (Optimized) (Time complexity O(N))
-    static void levelOrderTraversal2(BTNode root){
+    static void levelOrderTraversal2(TreeNode root){
 
-        Queue<BTNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
 
         while(!queue.isEmpty()){
-            BTNode currNode = queue.poll();
+            TreeNode currNode = queue.poll();
 
             System.out.print(currNode.val+" ");
 
@@ -118,14 +120,14 @@ public class BinaryTreeTraversalsLvl2 {
     }
 
     //level order traversal return List
-    static List<List<Integer>> levelOrderTraversal3(BTNode root) {
+    static List<List<Integer>> levelOrderTraversal3(TreeNode root) {
 
         List<List<Integer>> levels = new ArrayList<>();
         List<Integer> ls = new ArrayList<>();
         ls.add(root.val);
         levels.add(ls);
 
-        Queue<BTNode> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         queue.add(null);
 
@@ -133,7 +135,7 @@ public class BinaryTreeTraversalsLvl2 {
 
         while (!queue.isEmpty()){
 
-            BTNode currNode = queue.poll();
+            TreeNode currNode = queue.poll();
 
             if(currNode==null){
                 if(!queue.isEmpty()){
@@ -160,7 +162,32 @@ public class BinaryTreeTraversalsLvl2 {
         return levels;
     }
 
+    static List<List<Integer>> levelOrderTraversalNew(TreeNode root){
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
 
+        while (!q.isEmpty()){
+            List<Integer> currList = new ArrayList<>();
+            Queue<TreeNode> tempQ = new LinkedList<>();
+            //traverse all the elements present in the current queue
+            while (!q.isEmpty()){
+                TreeNode curr = q.poll();
+                currList.add(curr.val);
+
+                if(curr.left!=null)
+                    tempQ.add(curr.left);
+
+                if(curr.right!=null)
+                    tempQ.add(curr.right);
+            }
+
+            res.add(new ArrayList<>(currList));
+            q = new LinkedList<>(tempQ);
+        }
+
+        return res;
+    }
 }
 
 
